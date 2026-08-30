@@ -8,8 +8,8 @@ export class AppController {
 
   @MessagePattern({ cmd: "validate_user" })
   handleUserValidation(@Payload() data: any) {
-    const { username, password } = data;
-    return this.appService.validateUser(username, password);
+    const { username, password, userId } = data;
+    return this.appService.validateUser(username, password, userId);
   }
 
   @Get()

@@ -7,8 +7,8 @@ export interface UserValidationResponse {
 
 @Injectable()
 export class AppService {
-  validateUser(username: string, password: string): UserValidationResponse {
-    if (username === 'admin' && password === 'password') {
+  validateUser(username: string, password: string, userId: string): UserValidationResponse {
+    if (userId === "1") {
       return { isValid: true, status: 'valid' };
     }
     return { isValid: false, status: 'invalid' };
