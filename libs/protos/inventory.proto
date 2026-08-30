@@ -10,6 +10,7 @@ service InventoryService {
 message StockResponse {
     int32 availableQuantity = 1;
     bool inStock = 2;
+    string productName = 3;
 }
 
 message StockRequest {

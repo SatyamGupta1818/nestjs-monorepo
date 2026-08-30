@@ -1,12 +1,14 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
+import { GrpcMethod } from '@nestjs/microservices';
+import type { CheckStockResponse } from './interfaces/app.interface';
 import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
 
-  @Get()
-  getData() {
-    return this.appService.getData();
+  @GrpcMethod('InventoryService', 'CheckStock')
+  checkStock(data: { productId: string; }): CheckStockResponse {
+    return this.appService.checkStock(data);
   }
 }
